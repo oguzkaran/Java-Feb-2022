@@ -1,32 +1,34 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Bir Java programı genel olarak paketlerden, paketler sınıflardan sınıflardan da metotlardan oluşur.
+	Tür (type): Bir değişken için bellekte ne kadar ayrılacağını ve içerisindeki hangi yöntemle tutulacağını belirten
+	kavramdır
 	
-	paket bildiriminin genel biçimi:
+	Java'da türler genel olarak iki gruba ayrılabilir: 
+	Temel türler (primitive/built-in/predefined types), programcının tanımladığı türler (user defined types)
 	
-	package <isim>;
-	Örneğin 
-	package csd;
+	Her temel ismi bir anahtar sözcüktür
 	
-	Paketler konusu ileride detaylı olarak ele alınacaktır
+	Temel türler
 	
-	Sınıf bildiriminin detayları gözardı edilmiş genel biçimi:
+	Tür ismi			Uzunluğu (byte)
+	short 					2
+	int						4
+	long					8
+	byte					1
 	
-	class <isim> {
-		//...
-	}
+	float					4
+	double					8
 	
-	Örneğin:
-	class Sample {
-		//...
-	}
-
-	class Mample {
-		//...
-	}
+	char					2
+	boolean					-
 	
-	Sınıflar konusunun detayları da ileride ele alınacaktır
-	
-	
+	Anahtar Notlar:
+	- Java'da türlerin uzunlukları boolean türü dışında sistemden sisteme değişmez. 
+	- Tamsayı türleri (integer/integral types) için ikiye tümleme yöntemi kullanılır
+	- Tüm tamsayı türleri işaretlidir (signed)
+	- int türüne "integer" demek yanlış bir terim kullanmak demektir.
+	- Gerçek sayı (real/floating point types) için "IEEE 754 standardı" kullanılır
+	- boolean türünün alabileceği iki tane değer vardır: true, false. boolean türünün uzunluğu "Java Language Specification"'da 
+	belirtilmemiştir. Sistemden sisteme değişebilir. Ancak bu değişim programcı açısından problem oluşturmaz
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -34,14 +36,31 @@ class App {
 	public static void main(String [] args)
 	{		
 		System.out.println("Hello, World");
+		Sample.foo();
+		Sample.bar();
+		Mample.tar();
+		System.out.println("Goodbye, World");
 	}
 }
 
-
 class Sample {
-	//...
+	public static void foo()
+	{
+		System.out.println("Sample.foo");
+		Mample.tar();
+	}
+	
+	public static void bar()
+	{
+		System.out.println("Sample.bar");
+		foo();
+	}
 }
 
 class Mample {
-	//...
+	public static void tar()
+	{
+		System.out.println("Mample.tar");
+	}
 }
+
