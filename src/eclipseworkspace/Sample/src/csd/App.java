@@ -1,30 +1,15 @@
 /*----------------------------------------------------------------------------------------------------------------------,
-	Yukarıdaki kod aşağıdaki gibi bir çözümle daha iyi hale getirilebilir	
+	printf metodunda uygun format karakterleri kullanılmadığında genel olarak exception oluşur
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
-	public static void main(String [] args) 
+	public static void main(String [] args)
 	{		
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.print("Birinci sayıyı giriniz:");
-		int a = Integer.parseInt(kb.nextLine());
+		int a = 10;
 		
-		System.out.print("İkinci sayıyı giriniz:");
-		int b = Integer.parseInt(kb.nextLine());		
-		
-		System.out.println(NumberUtil.add(a, b));
-		
-		//...
-		
-		System.out.println(NumberUtil.add(a, b));			
-	}
-}
-
-class NumberUtil {
-	public static int add(int a, int b)	
-	{		
-		return a + b;		
+		System.out.printf("a = %b%n", a);
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
