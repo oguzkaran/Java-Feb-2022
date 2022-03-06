@@ -1,13 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------,
-	Neden standart metotları kullanmalıyız? Yani standart metodu yazmalı mıyız?
-	Java'da standart olarak (JavaSE) bulunan metotların kullanılmasının bazı önemli avantajları:
-	- Okunabilir kodlar yazılır
-	- Testleri yapılmıştır ve yeterince erkin olarak yazılmıştır
-	- Taşınabilirdir
-	- Bazı metotlar (ki bunların sayısı oldukça fazladır) başka detay konuları da bilmeyi gerektirir
-	- Programcının projede sadece kendi konusuna odaklanmasını sağlar
-	
-	
+	Math sınıfının min ve max metotları ile 3 tane sayının en küçüğünün ve en büyüğünün bulunması
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -16,14 +8,31 @@ class App {
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		System.out.print("Birinci sayıyı giriniz:");
-		double a = Double.parseDouble(kb.nextLine());
+		int a = Integer.parseInt(kb.nextLine());
+		
 		System.out.print("İkinci sayıyı giriniz:");
-		double b = Double.parseDouble(kb.nextLine());
+		int b = Integer.parseInt(kb.nextLine());
 		
-		double result;
-		result = a / b;
+		System.out.print("Üçüncü sayıyı giriniz:");
+		int c = Integer.parseInt(kb.nextLine());
 		
-		System.out.printf("%f / %f = %f%n", a, b, result);
+		System.out.printf("min(%d, %d, %d) = %d%n", a, b, c, MathUtil.min(a, b, c));
+		System.out.printf("max(%d, %d, %d) = %d%n", a, b, c, MathUtil.max(a, b, c));
 	}
 }
 
+class MathUtil {
+	public static int min(int a, int b, int c)
+	{
+		return Math.min(Math.min(a, b), c);
+		
+	}
+	
+	public static int max(int a, int b, int c)
+	{
+		return Math.max(Math.max(a, b), c);
+		
+	}
+	
+	//...
+}
