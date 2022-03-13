@@ -1,15 +1,15 @@
-/*----------------------------------------------------------------------------------------------------------------------,
-	Carriage return karakter sabiti 
+/*----------------------------------------------------------------------------------------------------------------------	 
+	Gerçek sayıların üstel (bilimsel) gösterilişi   
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		char c = '\t';
+		double avogadroConstant = 6.02E23;
 		
-		System.out.print("Merhaba");
-		System.out.print(c);
-		System.out.print("Test");
+		System.out.println(avogadroConstant);
+		//...
 	}
 }
+
