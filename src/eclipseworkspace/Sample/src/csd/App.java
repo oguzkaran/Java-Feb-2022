@@ -1,41 +1,16 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	 Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerini döndüren factorial isimli metodu
-	 NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-	 Açıklamalar:
-	 - Faktoriyel işlemi aşağıdaki gibidir: 
-		 0! = 1
-		 1!= 1
-		 2! = 1 * 2
-		 3! = 1 * 2 * 3
-		 
-		 ...
-		 
-		 n! = 1 * 2 * 3 * ... * (n - 1) * n
-	 
-	 - Negatif sayılar için faktoriyel değeri 1 olarak döndürelecektir	 
+	3 basamaklı Armstrong sayılarının içiiçe döngü ile bulunması
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		GetPrimeTest.run();
+		for (int a = 1; a <= 9; ++a)
+			for (int b = 0; b <= 9; ++b)
+				for (int c = 0; c <= 9; ++c)
+					if (a * a * a + b * b * b + c * c * c == 100 * a + 10 * b + c)
+						System.out.printf("%d%d%d%n", a, b, c);
 	}
-}
-
-class GetPrimeTest {
-	public static void run()
-	{		
-		for (int n = -1; n <= 12; ++n)
-			System.out.printf("%d! = %d%n", n, NumberUtil.factorial(n));
-	}
-}
-
-class NumberUtil {
-	public static int factorial(int n)
-	{
-		//TODO:
-	}	
-	
 }
 
