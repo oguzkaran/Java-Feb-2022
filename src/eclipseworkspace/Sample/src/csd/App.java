@@ -1,59 +1,68 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	 Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong 
-	 isimli metodu NumberUtil sınıfı içerisinde yazınız.
+	 Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime isimli
+	 metodu yazınız ve aşağıdaki kod ile test ediniz.
 	 
-	 Açıklamalar:
-	 - Bir sayının her basamağının basamak sayıncı kuvvetleri toplandığında sayının kendisine eşitse bu sayıya Armstrong
-	 sayısı denir. Örneğin:
-	 
-	 153 -> 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153
-	 
-	 - Kuvvet alma işlemi için yazılmış olan pow metodunu kullanınız
-	 
-	 - Sayı negatif ise Armstrong sayısı kabul etmeyiniz
-	 
-	 - Metodu, 1 basamaklı, 2 basamaklı, 3 basamaklı, 4 basamaklı, 5 basamaklı ve 6 basamaklı Armstrong sayılarını
-	 ekrana yazdırarak test ediniz	 
+	 Açıklamalar: 
+	 	- isPrime metodunun hızlı versiyonunu hızlı olduğu bilinciyle getPrime metodunu yazınız
+	 	- n değerinin pozitif olmaması durumu metot içerisinde kontrol edilmeyecektir
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		CountDigitsTest.run();
+		GetPrimeTest.run();
 	}
 }
 
-class CountDigitsTest {
+class GetPrimeTest {
 	public static void run()
-	{
+	{		
 		java.util.Scanner kb = new java.util.Scanner(System.in);		
 		
 		for (;;) {
 			System.out.print("Bir sayı giriniz:");
-			int val = Integer.parseInt(kb.nextLine());
+			int n = Integer.parseInt(kb.nextLine());		
 			
-			System.out.printf("%d sayısının basamak sayısı:%d%n", val, NumberUtil.countDigits(val));
 			
-			if (val == 0) {
+			if (n <= 0) {
 				System.out.println("Tekrar yapıyor musunuz?");
 				return;
 			}
+			
+			System.out.printf("%d. asal sayı:%d%n", n, NumberUtil.getPrime(n));
 		}		
 	}
 }
 
 class NumberUtil {
-	public static int countDigits(int val)
+	public static int getPrime(int n)
 	{
-		int count = 0;
+		//TODO:
+	}
+	
+	public static boolean isPrime(long a)
+	{
+		if (a <= 1)
+			return false;
 		
-		do {
-			++count;
-			val /= 10;
-			
-		} while (val != 0);		
-				
-		return count;
+		if (a % 2 == 0)
+			return a == 2;
+		
+		if (a % 3 == 0)
+			return a == 3;		
+		
+		if (a % 5 == 0)
+			return a == 5;
+		
+		if (a % 7 == 0)
+			return a == 7;
+
+		for (long i = 11; i * i <= a; i += 2)
+			if (a % i == 0)
+				return false;
+		
+		return true;		
 	}
 }
+
