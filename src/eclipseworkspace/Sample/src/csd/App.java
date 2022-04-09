@@ -27,7 +27,7 @@ class FibonacciNumberTest {
 			if (n < 1)
 				break;
 			
-			System.out.printf("%d. Fibonacci sayısı:%d%n", NumberUtil.fibonacciNumber(n));
+			System.out.printf("%d. Fibonacci sayısı:%d%n", n, NumberUtil.fibonacciNumber(n));
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");
@@ -37,6 +37,17 @@ class FibonacciNumberTest {
 class NumberUtil {
 	public static int fibonacciNumber(int n) 
 	{
-		//TODO: 
+		if (n <= 2)
+			return n - 1;
+		
+		int prev1 = 1, prev2 = 0, val = 0;
+		
+		for (int i = 2; i < n; ++i) {
+			val = prev1 + prev2;			
+			prev2 = prev1;
+			prev1 = val;
+		}
+		
+		return val;
 	}
 }
