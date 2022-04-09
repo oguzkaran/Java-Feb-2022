@@ -1,16 +1,42 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	3 basamaklı Armstrong sayılarının içiiçe döngü ile bulunması
+	Sınıf Çalışması: Parametresi ile aldığı n sayısı için n-inci Fibonacci sayısını döndüren fibonacciNumber isimli 
+	metodu NumberUtil sınıfı içerisinde ve aşağıdaki kod ile test ediniz
+	Açıklama:
+		- Fibonnaci sayıları
+			0 1 1 2 3 5 8 13 21 34 ...
+		- Metot pozitif olmayan n değerleri için kontrol yapmayacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
-	{
-		for (int a = 1; a <= 9; ++a)
-			for (int b = 0; b <= 9; ++b)
-				for (int c = 0; c <= 9; ++c)
-					if (a * a * a + b * b * b + c * c * c == 100 * a + 10 * b + c)
-						System.out.printf("%d%d%d%n", a, b, c);
+	{		
+		FibonacciNumberTest.run();		
 	}
 }
 
+class FibonacciNumberTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int n = Integer.parseInt(kb.nextLine());
+			
+			if (n < 1)
+				break;
+			
+			System.out.printf("%d. Fibonacci sayısı:%d%n", NumberUtil.fibonacciNumber(n));
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
+class NumberUtil {
+	public static int fibonacciNumber(int n) 
+	{
+		//TODO: 
+	}
+}
