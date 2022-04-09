@@ -1,54 +1,99 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayıdan büyük ilk Fibonacci sayısına geri dönen nextFibonacciNumber
-	isimli metodu yazınız ve aşağıdaki kod ile test ediniz
+	Basit bir menü uygulamasının iskeleti
+	(ileride daha iyisi yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{		
-		NextFibonacciNumberTest.run();		
+		MenuApp.run();
 	}
 }
 
-class NextFibonacciNumberTest {
+class MenuApp {
+	public static void run()
+	{
+		Menu.run();
+	}
+}
+
+class Menu {
+	public static void printMenu() 
+	{
+		System.out.println("1.Ekle");
+		System.out.println("2.Güncelle");
+		System.out.println("3.Sil");
+		System.out.println("4.Listele");
+		System.out.println("5. Çıkış");
+		System.out.print("Seçenek:");
+	}
+	
+	public static void doWorkForInsert()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Ekle\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForUpdate()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Güncelle\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForDelete()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Sil\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForList()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Listele\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	
+	public static void doWorkFor(int option)
+	{
+		switch (option) {
+		case 1:
+			doWorkForInsert();
+			break;
+		case 2:
+			doWorkForUpdate();
+			break;
+		case 3:
+			doWorkForDelete();
+			break;
+		case 4:
+			doWorkForList();
+			break;
+		default:
+			System.out.println("\"Geçersiz seçenek\"");
+		}		
+	}
+	
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
 		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int val = Integer.parseInt(kb.nextLine());
+			printMenu();
+			int option = Integer.parseInt(kb.nextLine());			
 			
-			if (val < -999)
+			if (option == 5)
 				break;
 			
-			System.out.printf("%d. sayısından büyük ilk Fibonacci sayısı:%d%n", val, NumberUtil.nextFibonacciNumber(val));
+			doWorkFor(option);
 		}
 		
+		System.out.println("Teşekkürler");
+		System.out.println("C ve Sistem Programcıları Derneği");
 		System.out.println("Tekrar yapıyor musunuz?");
-	}
-}
-
-class NumberUtil {
-	public static int nextFibonacciNumber(int n) 
-	{
-		//TODO:
-	}
-	
-	public static int fibonacciNumber(int n) 
-	{
-		if (n <= 2)
-			return n - 1;
-		
-		int prev1 = 1, prev2 = 0, val = 0;
-		
-		for (int i = 2; i < n; ++i) {
-			val = prev1 + prev2;			
-			prev2 = prev1;
-			prev1 = val;
-		}
-		
-		return val;
 	}
 }
