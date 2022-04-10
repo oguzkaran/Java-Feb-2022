@@ -49,7 +49,39 @@ class GetDayOfYearTest {
 class DateUtil {
 	public static int getDayOfYear(int day, int month, int year)
 	{
-		//TODO
+		if (!isValidDate(day, month, year))
+			return -1;
+		
+		int totalDays = day;
+		
+		switch (month - 1) {
+		case 11:
+			totalDays += 30;
+		case 10:
+			totalDays += 31;
+		case 9:
+			totalDays += 30;
+		case 8:
+			totalDays += 31;
+		case 7:
+			totalDays += 31;
+		case 6:
+			totalDays += 30;
+		case 5:
+			totalDays += 31;
+		case 4:
+			totalDays += 30;
+		case 3:
+			totalDays += 31;
+		case 2:
+			totalDays += 28;
+			if (isLeapYear(year))
+				++totalDays;
+		case 1:
+			totalDays += 31;			
+		}
+		
+		return totalDays;
 	}
 	
 	public static boolean isValidDate(int day, int month, int year)
