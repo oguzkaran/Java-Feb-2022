@@ -1,130 +1,93 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin aşağıdaki açıklamalara
-	göre haftanın hangi gününe geldiğini döndüren getDayOfWeek isimli metodu yazınız ve aşağıdaki kod ile test ediniz.
-	Açıklamalar:
-		- Metot geçersiz bir tarih durumunda -1 değerine geri dönecektir
-		- Haftanın günü 1.1.1900 ile verilen tarih arasındaki (verilen tarih dahil) gün sayısının 7(yedi) ile bölümünden 
-		elde edilen kalan ile belirlenebilir. Buna göre değer sıfır ise "pazar", 1 ise "pazartesi", ..., 6 ise "cumartesi"
-		günlerine karşılık gelir
-		
-		- 1.1.1900 öncesindeki tarihler geçersiz sayılacaktır
-		- getDayOfWeek metodu ile birlikte 
-				
-		- İleride daha iyisi yazılacaktır parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin
-		hafta sonu olup olmadığınıu test eden isWeekend ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız.
-		Bu iki metot tarih geçerlilik kontrolü yapmayacaktır
-		
-		- İleride daha yazılacaktır
+	Programcı ne zaman switch expression, ne zaman switch statement kullanmalıdır? Şüphesiz programcı Java 12 öncesinde
+	çalışıyorsa switch expression kullanamaz. Bu durumda programcı zorunlu olmadıkça, okunabilirlik açısından bir sorun da yoksa
+	switch expression tercih etmelidir
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
-	{	
-		GetDayOfWeekTest.run();		
+	{		
+		MenuApp.run();
 	}
 }
 
-class GetDayOfWeekTest {
+class MenuApp {
+	public static void run()
+	{
+		Menu.run();
+	}
+}
+
+class Menu {
+	public static void printMenu() 
+	{
+		System.out.println("1.Ekle");
+		System.out.println("2.Güncelle");
+		System.out.println("3.Sil");
+		System.out.println("4.Listele");
+		System.out.println("5. Çıkış");
+		System.out.print("Seçenek:");
+	}
+	
+	public static void doWorkForInsert()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Ekle\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForUpdate()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Güncelle\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForDelete()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Sil\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForList()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("\"Listele\" seçildi");
+		System.out.println("------------------------------------");
+	}
+	
+	public static void doWorkForQuit()
+	{
+		System.out.println("------------------------------------");
+		System.out.println("Teşekkürler");
+		System.out.println("C ve Sistem Programcıları Derneği");
+		System.out.println("Tekrar yapıyor musunuz?");
+		System.out.println("------------------------------------");
+		System.exit(0);
+	}
+	
+	
+	public static void doWorkFor(int option)
+	{
+		switch (option) {
+		case 1 -> doWorkForInsert();			
+		case 2 -> doWorkForUpdate();
+		case 3 -> doWorkForDelete();			
+		case 4 -> doWorkForList();			
+		case 5 -> doWorkForQuit();
+		default -> System.out.println("\"Geçersiz seçenek\"");
+		}		
+	}
+	
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
 		for (;;) {
-			System.out.print("Gün ay ve yıl bilgilerini giriniz?");
-			int day = kb.nextInt();
-			int month = kb.nextInt();
-			int year = kb.nextInt();
-			
-			if (day == 0)
-				break;
-			
-			int dayOfWeek = DateUtil.getDayOfWeek(day, month, year);		
-			
-			if (dayOfWeek != -1)
-				System.out.printf("%02d/%02d/%04d tarihi haftanın %d. günüdür%n", day, month, year, dayOfWeek);
-			else
-				System.out.println("Geçersiz tarih");
-		}
-		
-		System.out.println("Tekrar yapıyor musunuz?");
-	}
-}
-
-class DateUtil {
-	public static int getDayOfWeek(int day, int month, int year)
-	{
-		//TODO:
-	}
-	
-	
-	public static int getDayOfYear(int day, int month, int year)
-	{
-		if (!isValidDate(day, month, year))
-			return -1;
-		
-		int totalDays = day;
-		
-		switch (month - 1) {
-		case 11:
-			totalDays += 30;
-		case 10:
-			totalDays += 31;
-		case 9:
-			totalDays += 30;
-		case 8:
-			totalDays += 31;
-		case 7:
-			totalDays += 31;
-		case 6:
-			totalDays += 30;
-		case 5:
-			totalDays += 31;
-		case 4:
-			totalDays += 30;
-		case 3:
-			totalDays += 31;
-		case 2:
-			totalDays += 28;
-			if (isLeapYear(year))
-				++totalDays;
-		case 1:
-			totalDays += 31;			
-		}
-		
-		return totalDays;
-	}
-	
-	public static boolean isValidDate(int day, int month, int year)
-	{		
-		return  1 <= day && day <= 31 && 1 <= month && month <= 12 && day <= getDays(month, year);		
-	}
-	
-	public static int getDays(int month, int year)
-	{
-		int days;
-		
-		switch (month) {
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			days = 30;
-			break;
-		case 2:
-			days = 28;
-			if (isLeapYear(year))
-				++days;
-			break;
-		default:
-			days = 31;
-		}
-		
-		return days;
-	}
-	
-	public static boolean isLeapYear(int year)
-	{
-		return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+			printMenu();			
+			doWorkFor(Integer.parseInt(kb.nextLine()));
+		}		
 	}
 }
