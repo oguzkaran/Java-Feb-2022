@@ -1,26 +1,31 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin yılın kaçıncı günü 
-	olduğunu döndüren getDayOfYear metodunu yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin aşağıdaki açıklamalara
+	göre haftanın hangi gününe geldiğini döndüren getDayOfWeek isimli metodu yazınız ve aşağıdaki kod ile test ediniz.
 	Açıklamalar:
 		- Metot geçersiz bir tarih durumunda -1 değerine geri dönecektir
-		- Yılın kaçıncı günü olduğuna ilişkin algoritma için aşağıdaki örneklerini inceleyiniz:
-			01.03.2020 -> 1 + 29 + 31 = 61
-			01.03.2022 -> 1 + 28 + 31 = 60
-			31.12.2020 -> 31 + 30 + 31 + ... + 29 + 31 = 366
-			31.12.2022 -> 31 + 30 + 31 + ... + 28 + 31 = 365
-	
-		- İleride daha iyisi yazılacaktır
+		- Haftanın günü 1.1.1900 ile verilen tarih arasındaki (verilen tarih dahil) gün sayısının 7(yedi) ile bölümünden 
+		elde edilen kalan ile belirlenebilir. Buna göre değer sıfır ise "pazar", 1 ise "pazartesi", ..., 6 ise "cumartesi"
+		günlerine karşılık gelir
+		
+		- 1.1.1900 öncesindeki tarihler geçersiz sayılacaktır
+		- getDayOfWeek metodu ile birlikte 
+				
+		- İleride daha iyisi yazılacaktır parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin
+		hafta sonu olup olmadığınıu test eden isWeekend ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız.
+		Bu iki metot tarih geçerlilik kontrolü yapmayacaktır
+		
+		- İleride daha yazılacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{	
-		GetDayOfYearTest.run();		
+		GetDayOfWeekTest.run();		
 	}
 }
 
-class GetDayOfYearTest {
+class GetDayOfWeekTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -34,10 +39,10 @@ class GetDayOfYearTest {
 			if (day == 0)
 				break;
 			
-			int dayOfYear = DateUtil.getDayOfYear(day, month, year);		
+			int dayOfWeek = DateUtil.getDayOfWeek(day, month, year);		
 			
-			if (dayOfYear != -1)
-				System.out.printf("%02d/%02d/%04d tarihi yılın %d. günüdür%n", day, month, year, dayOfYear);
+			if (dayOfWeek != -1)
+				System.out.printf("%02d/%02d/%04d tarihi haftanın %d. günüdür%n", day, month, year, dayOfWeek);
 			else
 				System.out.println("Geçersiz tarih");
 		}
@@ -47,6 +52,12 @@ class GetDayOfYearTest {
 }
 
 class DateUtil {
+	public static int getDayOfWeek(int day, int month, int year)
+	{
+		//TODO:
+	}
+	
+	
 	public static int getDayOfYear(int day, int month, int year)
 	{
 		if (!isValidDate(day, month, year))
