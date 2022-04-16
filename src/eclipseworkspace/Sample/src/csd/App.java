@@ -1,14 +1,15 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	
+	Herhangi bir türden boolean türüne explicit dönüşüm geçersizdir
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
-	{	
-		float a = 12.4F;
+	{		
+		int a = 10;
+		boolean b;
 		
-		System.out.printf("a = %.12f%n", a);
+		b = (boolean)a; //error
 	}
 }
 
