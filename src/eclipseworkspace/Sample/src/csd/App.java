@@ -1,15 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Herhangi bir türden boolean türüne explicit dönüşüm geçersizdir
+	Gerçek sayı türünde tamsayı türüne  
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{		
-		int a = 10;
-		boolean b;
+		double a = -5_000_000_000.89;
+		short b;
 		
-		b = (boolean)a; //error
+		b = (short)a;
+		
+		System.out.printf("-5_000_000_000 = %08X%n", (int)-5_000_000_000L);
+		System.out.printf("-2147483648 = %d, %08X%n", -2147483648, -2147483648);
+		System.out.printf("b = %d, %X%n", b, b);			
+		
 	}
 }
 
