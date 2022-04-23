@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Bir metodun geri dönüş değeri bilgisinin de overload işlemine etkisi yoktur 
+	 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -10,18 +10,33 @@ class App {
 	}
 }
 
-class Sample {
-	public static void foo() //error
+class MyMath {	
+	public static int abs(int a) //#1
 	{
-		System.out.println("Sample.foo");
+		System.out.println("abs, int");
+		
+		return a < 0 ? -a : a; 
 	}
 	
-	public static int foo() //error
+	public static double abs(double a)  //#2
 	{
-		System.out.println("Sample.foo");
+		System.out.println("abs, double");
 		
-		return 10;
+		return a < 0 ? -a : a; 
+	}
+	
+	public static float abs(float a)  //#3
+	{
+		System.out.println("abs, float");
+		
+		return a < 0 ? -a : a; 
+	}
+	
+	
+	public static long abs(long a)  //#4
+	{
+		System.out.println("abs, long");
+		
+		return a < 0 ? -a : a; 
 	}
 }
-
-
