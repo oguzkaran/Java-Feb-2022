@@ -1,51 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	 Koşul Operatörü (conditional operator):	 
+	Bir metodun geri dönüş değeri bilgisinin de overload işlemine etkisi yoktur 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
-	{
-		IsArmstrongTest.run();
+	{	
+		
 	}
 }
 
-class IsArmstrongTest {
-	public static void run()
+class Sample {
+	public static void foo() //error
 	{
-		for (int a = -10; a <= 999999; ++a)
-			if (NumberUtil.isArmstrong(a))
-				System.out.println(a);
-		
-		System.out.println("Tekrar yapıyor musunuz?");
-	}
-}
-
-class NumberUtil {
-	public static boolean isArmstrong(int a)
-	{
-		return a >= 0 && getDigitsPowSum(a) == a;				
+		System.out.println("Sample.foo");
 	}
 	
-	public static int getDigitsPowSum(int a)
+	public static int foo() //error
 	{
-		int n = countDigits(a);
-		int total = 0;
+		System.out.println("Sample.foo");
 		
-		while (a != 0) {
-			total += Math.pow(a % 10, n);
-			a /= 10;					
-		}
-		
-		return total;
-	}	
-	
-	public static int countDigits(int a)
-	{
-		if (a == 0)
-			return 1;
-		
-		return (int)Math.log10(Math.abs(a)) + 1;
+		return 10;
 	}
 }
 
