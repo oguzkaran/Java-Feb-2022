@@ -1,48 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Homework-003-3. sorunun bir çözümü
-	(Not: Çözüm çalışma sorusunun verildiği tarihte işlenmiş olan konulara göre yazılmıştır) 
+	Math sınıfının random metodu [0, 1) aralığında rasgele üretilmiş double türden bir değere geri döner. Bu metot 
+	içsel olarak her çağıramda aynı Random nesnesini kullanır. Bu metot ilk kez çağrıldığında kullandığı Random
+	nesnesi yaratılır ve her çağrıda bu nesne kullanılır. Aşağıdaki örneğin yaklaşık eşdeğeri:
+	
+	java.util.Random r = new java.util.Random();
+	
+	for (int i = 0; i < 10; ++i)
+		System.out.println(r.nextDouble());
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		CalculateDigitalRootTest .run();
+		for (int i = 0; i < 10; ++i)
+			System.out.println(Math.random());
 	}
 }
 
-class CalculateDigitalRootTest {
-	public static void run()
-	{
-		for (int i = 1; i < 40000; ++i)
-			System.out.printf("%d sayısının basamaksal kökü:%d%n", i, NumberUtil.calculateDigitalRoot(i));
-	}
-}
-
-
-
-class NumberUtil {
-	public static int calculateDigitalRoot(int a)
-	{
-		int root = Math.abs(a);
-		
-		while (root > 9)
-			root = digitsSum(root);		
-		
-		return root;
-	}
-	
-	public static int digitsSum(int val)
-	{
-		int sum = 0;
-		
-		while (val != 0) {
-			sum += val % 10;
-			val /= 10;
-		}
-		
-		return sum;
-	}
-	
-	
-}
