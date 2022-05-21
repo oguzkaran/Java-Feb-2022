@@ -1,72 +1,145 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Point sınıfı ve test kodu
+	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		Point p1, p2, p3;
+		Complex z = new Complex(3, 5);
 		
-		p1 = new Point(100, 100);
-		p2 = new Point();
-		p3 = new Point(400);
-		
-		
-		p1.print();
-		p2.print();
-		p3.print();		
+		z.inc(3);		
+		z.print();
+		z.dec(3);
+		z.print();		
 	}
 }
 
-
-class Point {
-	public int x;
-	public int y;
+class Complex {
+	public double real;
+	public double imag;
 	
-	public Point()
+	public static Complex add(double a1, double b1, double a2, double b2) //İleride bu metot gizlenecektir
+	{		
+		return new Complex(a1 + a2, b1 + b2);
+	}
+	
+	public static Complex subtract(double a1, double b1, double a2, double b2) //İleride bu metot gizlenecektir
+	{		
+		return add(a1, b1, -a2, -b2);	
+	}
+	
+	public static Complex multiply(double a1, double b1, double a2, double b2) //İleride bu metot gizlenecektir
+	{		
+		return new Complex(a1 * a2 - b1  * b2, a1 * b2 + a2 * b1);	
+	}
+	
+	public Complex()
 	{		
 	}
 	
-	public Point(int a)
+	public Complex(double re)
 	{
-		x = a;
+		real = re;		
 	}
 	
-	public Point(int a, int b)
+	public Complex(double re, double im)
 	{
-		x = a;
-		y = b;
+		real = re;
+		imag = im;
 	}
 	
-	public double distance()
+	public double getNorm()
 	{
-		return distance(0, 0);		
+		return Math.sqrt(real * real + imag * imag);
 	}
 	
-	public double distance(Point other)
+	public double getLength()
 	{
-		return distance(other.x, other.y);				
+		return getNorm();
 	}
 	
-	public double distance(int a, int b)
+	
+	public Complex getConjugate()
 	{
-		return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));
+		return new Complex(real, -imag);
+	}
+	
+	//add	
+	public static Complex add(double value, Complex z)
+	{
+		return add(value, 0, z.real, z.imag);		
+	}
+	
+	public Complex add(Complex other)
+	{
+		return add(real, imag, other.real, other.imag);
+	}
+	
+	public Complex add(double value)
+	{
+		return add(real, imag, value, 0);
+	}
+	
+	//subtract
+	public static Complex subtract(double value, Complex z)
+	{
+		return subtract(value, 0, z.real, z.imag);		
+	}
+	
+	public Complex subtract(Complex other)
+	{
+		return subtract(real, imag, other.real, other.imag);
+	}
+	
+	public Complex subtract(double value)
+	{
+		return subtract(real, imag, value, 0);
+	}
+	
+	
+	//multiply
+	public static Complex multiply(double value, Complex z)
+	{
+		return multiply(value, 0, z.real, z.imag);		
+	}
+	
+	public Complex multiply(Complex other)
+	{
+		return multiply(real, imag, other.real, other.imag);
+	}
+	
+	public Complex multiply(double value)
+	{
+		return multiply(real, imag, value, 0);
+	}
+	
+	//divide (TODO)
+	
+	//inc
+	public void inc(double value)
+	{
+		real += value;
+	}
+	
+	public void inc()
+	{
+		inc(1);
+	}
+	
+	//dec
+	public void dec(double value)
+	{
+		inc(-value);		
+	}
+	
+	public void dec()
+	{
+		dec(1);
 	}	
-	
-	public void offset(int dxy)
-	{
-		offset(dxy, dxy);
-	}
-	
-	public void offset(int dx, int dy)
-	{
-		x += dx;
-		y += dy;
-	}
 	
 	public void print()
 	{
-		System.out.printf("(%d, %d)%n", x, y);
+		System.out.printf("|%.2f, %.2f| = %f%n", real, imag, getNorm());
 	}
 }
