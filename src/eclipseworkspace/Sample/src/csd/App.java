@@ -1,53 +1,85 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Sınıf Çalışması: Parametresi ile aldığı iki yazıdan birinci içerisinde ikincisinden kaç tane olduğunu döndüren 
-	countString isimli metodu ve büyük küçük harf duyarsız olarak çalışan countStringIgnore isimli metodu yazınız ve
-	aşağıdaki kod ile test ediniz. Örneğin
-	
-	aaa yazısı içerisinde aa dan 2(iki) tane vardır
+	Sınıf Çalışması: Yukarıdaki uygulamanın kullanıcı adını karttan okuyan sadece şifre isteyen versiyonu
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{		
-		CountStringTest.run();
+		AtmApp.run(3);
 	}
 }
 
-class CountStringTest {
-	public static void run()
+class AtmApp {
+	
+	public static void doSuccess(AtmCard atmCard, java.util.Scanner kb)
+	{
+		System.out.println("-------------------------");
+		System.out.println("Giriş başarılı");
+		System.out.println("-------------------------");
+		//...
+	}
+	
+	public static void doFail(AtmCard atmCard, java.util.Scanner kb)
+	{
+		System.out.println("-------------------------");
+		System.out.println("Giriş başarısız. Artık deneme hakkınız biti!...");
+		System.out.println("-------------------------");
+		//...
+	}
+	
+	public static void doWorkForCard(AtmCard atmCard, int tryNum, java.util.Scanner kb)
+	{
+		int i = 0;
+		
+		for (; i < tryNum; ++i) {			
+			System.out.print("Şifreyi giriniz:");
+			String password = kb.nextLine();
+			
+			if (atmCard.isvalid(password))
+				break;
+			
+			if (i != tryNum - 1)
+				System.out.printf("Giriş başarısız. %d giriş hakkınız kaldı!...%n", tryNum - 1 - i);
+		}
+		
+		if (i != tryNum)
+			doSuccess(atmCard, kb);
+		else
+			doFail(atmCard, kb);		
+	}
+	
+	public static void run(int tryNum)
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
-		for (;;) {
-			System.out.print("Birinci yazıyı giriniz:");
-			String s1 = kb.nextLine();
+		for (;;) {			
+			AtmCard atmCard = new AtmCard(); //Her defasında yeni kart girişi yapılıyor olarak düşününüz
+			System.out.printf("Hoş geldiniz %s%n", atmCard.name);
 			
-			if ("elma".equals(s1))
-				break;
-			
-			System.out.print("İkinci yazıyı giriniz:");
-			String s2 = kb.nextLine();
-			
-			int count = StringUtil.countString(s1, s2);
-			System.out.printf("Birinci yazıda ikinci yazıdan %d adet var%n", count);
-			count = StringUtil.countStringIgnoreCase(s1, s2);
-			System.out.printf("Birinci yazıda ikinci yazıdan büyük küçük harf duyarsız olarak %d adet var%n", count);			
+			doWorkForCard(atmCard, tryNum, kb);			
 		}
-		
-		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-
-class StringUtil {
-	public static int countString(String s1, String s2)
+class AtmCard {
+	public String name;
+	public String password;
+	
+	public AtmCard() 
 	{
-		//TODO:
+		//Burada kartın içinden okunuyor olarak düşününüz
+		name = "Ali Vefa Serçe";
+		password = "1993";
 	}
 	
-	public static int countStringIgnoreCase(String s1, String s2)
+	public boolean isvalid(String passwd)
 	{
-		//TODO:
+		return passwd.equals(password);
 	}
+	
+	//...
 }
+
+
+
