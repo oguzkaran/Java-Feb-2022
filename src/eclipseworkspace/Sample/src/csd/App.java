@@ -1,18 +1,53 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Derleyici özdeş string sabitleri (string literals) için aynı nesnenin referansını verecek bir kod üretir. Yani bir
-	string sabiti ile özdeş kaç tane sabit olursa olsun hepsi için aynı nesnenin referansı elde edilir. Yeniden nesne
-	yaratılmaz. Aşağıdaki örnekte yine referans karşılaştırması yapılmıştır. Ancak s1 ve s2'ye atanan string'ler özdeş
-	olduğundan aynı adresler tutulmuş olur. Örnek durumu anlatmak için yazılmıştır
+	Sınıf Çalışması: Parametresi ile aldığı iki yazıdan birinci içerisinde ikincisinden kaç tane olduğunu döndüren 
+	countString isimli metodu ve büyük küçük harf duyarsız olarak çalışan countStringIgnore isimli metodu yazınız ve
+	aşağıdaki kod ile test ediniz. Örneğin
+	
+	aaa yazısı içerisinde aa dan 2(iki) tane vardır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{		
-		String s1 = "ankara";		
-		String s2 = "ankara";
-		
-		System.out.println(s1 == s2 ? "Aynı yazı" : "Farklı yazılar");
+		CountStringTest.run();
 	}
 }
 
+class CountStringTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Birinci yazıyı giriniz:");
+			String s1 = kb.nextLine();
+			
+			if ("elma".equals(s1))
+				break;
+			
+			System.out.print("İkinci yazıyı giriniz:");
+			String s2 = kb.nextLine();
+			
+			int count = StringUtil.countString(s1, s2);
+			System.out.printf("Birinci yazıda ikinci yazıdan %d adet var%n", count);
+			count = StringUtil.countStringIgnoreCase(s1, s2);
+			System.out.printf("Birinci yazıda ikinci yazıdan büyük küçük harf duyarsız olarak %d adet var%n", count);			
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
+
+class StringUtil {
+	public static int countString(String s1, String s2)
+	{
+		//TODO:
+	}
+	
+	public static int countStringIgnoreCase(String s1, String s2)
+	{
+		//TODO:
+	}
+}
