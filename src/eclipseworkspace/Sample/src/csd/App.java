@@ -1,99 +1,72 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Homework-002-4. sorunun bir çözümü
-	(Not: İleride daha iyisi yazılacaktır) 
+	Sınıf Çalışması: Prametresi ile aldığı bir yazının Türkçe pangram olup olmadığını test eden isPangramTR ve İngilizce
+	pangram olup olmadığını test eden isPangramEN metotlarını StringUtil sınıfı içerisinde yazınız ve aşağıdaki kod
+	ile test ediniz.
+	
+	Pangram: İçerisinde özel isim olmayan ve ilgili dilin alfabesinin tüm karakterlerini içeren cümlelere denir
+	
+	Programda özel isim ve anlamlı olması durumu dikkate alınmayacaktır
+	
+	İngilizce: The quick brown fox jumps over the lazy dog.
+	Türkçe: Pijamalı hasta yağız şoföre çabucak güvendi.	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		BallFallGameApp.run();
+		IsPangramTest.run();
 	}
 }
 
-class BallFallGameApp {	
+class IsPangramTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
-		BallFall bf = new BallFall();
-		
+		IsPangramTestTR.run(kb);
+		IsPangramTestEN.run(kb);		
+	}
+}
+
+class IsPangramTestEN {
+	public static void run(java.util.Scanner kb)
+	{		
 		for (;;) {
-			System.out.print("Width:");
-			int width = Integer.parseInt(kb.nextLine());
+			System.out.print("Input a text:");
+			String s = kb.nextLine();
 			
-			if (width == 0)
+			if ("exit".equals(s))
 				break;
 			
-			System.out.print("Height:");
-			int height = Integer.parseInt(kb.nextLine());
+			System.out.println(StringUtil.isPangramEN(s) ? "is pangram" : "is not a pangram");						
+		}				
+	}
+}
+
+class IsPangramTestTR {
+	public static void run(java.util.Scanner kb)
+	{		
+		for (;;) {
+			System.out.print("Bir yazı giriniz:");
+			String s = kb.nextLine();
 			
+			if ("elma".equals(s))
+				break;
 			
-			bf.play(width, height);
-			
-			System.out.println(bf.shape);
-		}
-		
-		System.out.println("Tekrar yapıyor musunuz?");
+			System.out.println(StringUtil.isPangramTR(s) ? "Pangram" : "Pangram değil");						
+		}				
 	}
 }
 
 
-class BallFall {
-	public String shape;	
-	
-	public static boolean updateRightFlag(boolean isRight, int ballIndex, int width)
+class StringUtil {
+	public static boolean isPangramTR(String s)
 	{
-		if (ballIndex == 0)
-			isRight = true;
-		else if (ballIndex == width - 1)
-			isRight = false;
-		
-		return isRight;		
+		//TODO:
 	}
 	
-	public static int updateBallIndex(boolean isRight, int ballIndex)
+	public static boolean isPangramEN(String s)
 	{
-		if (isRight)
-			return ballIndex + 1;
-		
-		return ballIndex - 1;
-	}
-	
-	public void fillSpace(int begin, int end) //[begin, end)
-	{
-		for (int i = begin; i < end; ++i)
-			shape += ' ';
-	}
-	
-	public void fillBall(int ballIndex, int end)
-	{
-		fillSpace(0, ballIndex);
-		shape += '*';
-		fillSpace(ballIndex + 1, end);
-	}	
-	
-	
-	public BallFall()
-	{
-		shape = "";
-	}
-	
-	
-	public void play(int width, int height)
-	{
-		int ballIndex = 0;
-		boolean isRight = false;
-		
-		shape = "";
-		
-		for (int i = 1; i <= height; ++i) {
-			shape += '|';
-			fillBall(ballIndex, width);
-			if (width != 1) {
-				isRight = updateRightFlag(isRight, ballIndex, width);
-				ballIndex = updateBallIndex(isRight, ballIndex);
-			}
-			shape += "|\r\n";
-		}		
+		//TODO:
 	}
 }
