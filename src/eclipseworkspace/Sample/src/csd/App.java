@@ -1,57 +1,36 @@
-/*----------------------------------------------------------------------------------------------------------------------
- 	Sınıf Çalışması: Aşağıda açıklanan metotları StringUtil yazınız ve aşağıdaki kod ile test ediniz
- 	
- 	public static String padLeading(String s, int len, char ch);
- 	public static String padLeading(String s, int len);
- 	public static String padTrailing(String s, int len, char ch);
- 	public static String padTrailing(String s, int len);
- 	
- 	Açıklamalar:
- 	- padLeading metodunun 3 parametreli overload'u ikinci parametresi ile aldığı len, birinci parametresi ile
- 	aldığı yazının uzunluğundan büyükse yazıyı soldan (baştan) üçüncü parametresi ile aldığı karakter ile doldurulmuş
- 	yeni bir String referansına geri dönecektir. Örneğin:
- 		padLeading("ankara", 11, 'x'); çağrısı
- 		
- 		xxxxxankara
- 	yazısını döndürecektir
- 	
- 	- len uzunluğu yazının uzunluğundan küçük veye eişitse aynı referansa geri dönecektir
- 	
- 	- padLeading metodunun 2 parametreli overload'u yazıyı soldan (baştan) space karakteri ile doduracaktır  
- 	 
- 	- padTrailing metotları benzer şekilde sağdan (sondan) dolduracak şekilde yazılacaktır
- 	
- 	- Örneği Java 11+ için yazınız
----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------	 
+	Homework-002-4. sorunun bir çözümü
+	(Not: İleride daha iyisi yazılacaktır) 
+----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
-	{		
-		PadLeadingTrailingTest.run();				
+	{
+		BallFallGameApp.run();
 	}
 }
 
-class PadLeadingTrailingTest {
+class BallFallGameApp {	
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
+		BallFall bf = new BallFall();
 		
 		for (;;) {
-			System.out.print("Bir yazı giriniz:");
-			String s = kb.nextLine();		
+			System.out.print("Width:");
+			int width = Integer.parseInt(kb.nextLine());
 			
-			if ("elma".equals(s))
+			if (width == 0)
 				break;
 			
-			System.out.print("Bir sayı giriniz:");
-			int newLen = Integer.parseInt(kb.nextLine());
+			System.out.print("Height:");
+			int height = Integer.parseInt(kb.nextLine());
 			
 			
-			System.out.printf("(%s)%n", StringUtil.padLeading(s, newLen, 'x'));			
-			System.out.printf("(%s)%n", StringUtil.padLeading(s, newLen));			
-			System.out.printf("(%s)%n", StringUtil.padTrailing(s, newLen, 'x'));			
-			System.out.printf("(%s)%n", StringUtil.padTrailing(s, newLen));
+			bf.play(width, height);
+			
+			System.out.println(bf.shape);
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");
@@ -59,26 +38,62 @@ class PadLeadingTrailingTest {
 }
 
 
-class StringUtil {
-	public static String padLeading(String s, int len, char ch)
+class BallFall {
+	public String shape;	
+	
+	public static boolean updateRightFlag(boolean isRight, int ballIndex, int width)
 	{
-		//TODO:
+		if (ballIndex == 0)
+			isRight = true;
+		else if (ballIndex == width - 1)
+			isRight = false;
 		
+		return isRight;		
 	}
 	
- 	public static String padLeading(String s, int len)
- 	{
- 		//TODO:
- 	}
- 	
- 	public static String padTrailing(String s, int len, char ch)
- 	{
- 		//TODO:
- 	}
- 	
- 	public static String padTrailing(String s, int len)
- 	{
- 		//TODO:
- 	}
+	public static int updateBallIndex(boolean isRight, int ballIndex)
+	{
+		if (isRight)
+			return ballIndex + 1;
+		
+		return ballIndex - 1;
+	}
+	
+	public void fillSpace(int begin, int end) //[begin, end)
+	{
+		for (int i = begin; i < end; ++i)
+			shape += ' ';
+	}
+	
+	public void fillBall(int ballIndex, int end)
+	{
+		fillSpace(0, ballIndex);
+		shape += '*';
+		fillSpace(ballIndex + 1, end);
+	}	
+	
+	
+	public BallFall()
+	{
+		shape = "";
+	}
+	
+	
+	public void play(int width, int height)
+	{
+		int ballIndex = 0;
+		boolean isRight = false;
+		
+		shape = "";
+		
+		for (int i = 1; i <= height; ++i) {
+			shape += '|';
+			fillBall(ballIndex, width);
+			if (width != 1) {
+				isRight = updateRightFlag(isRight, ballIndex, width);
+				ballIndex = updateBallIndex(isRight, ballIndex);
+			}
+			shape += "|\r\n";
+		}		
+	}
 }
-
