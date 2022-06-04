@@ -1,51 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Sınıf Çalışması: Prametresi ile aldığı bir yazının Türkçe pangram olup olmadığını test eden isPangramTR ve İngilizce
-	pangram olup olmadığını test eden isPangramEN metotlarını StringUtil sınıfı içerisinde yazınız ve aşağıdaki kod
-	ile test ediniz.
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının palindrom olup olmadığını test eden isPalindrome metodunu
+	yazınız ve aşağıdaki kod ile test ediniz.
+	Palindrom: Yalnızca alfabetik karakterleri tersten okunduğunda aynı olan yazılara palindrom denir. Detayların gözardı
+	edilmesi koşuluyla bu tanım yazılabilir.
 	
-	Pangram: İçerisinde özel isim olmayan ve ilgili dilin alfabesinin tüm karakterlerini içeren cümlelere denir
-	
-	Programda özel isim ve anlamlı olması durumu dikkate alınmayacaktır
-	
-	İngilizce: The quick brown fox jumps over the lazy dog.
-	Türkçe: Pijamalı hasta yağız şoföre çabucak güvendi.	
+	Örnek:
+	Ey Edip Adana'da pide ye!	-> eyedipadanadapideye
+	Anastas mum satsana			-> anastasmumsatsana
+	Ali Papila 					-> alipapila	  		
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {	
 	public static void main(String [] args)
 	{
-		IsPangramTest.run();
+		IsPalindromeTest.run();
 	}
 }
 
-class IsPangramTest {
+class IsPalindromeTest {
 	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		IsPangramTestTR.run(kb);
-		IsPangramTestEN.run(kb);		
-	}
-}
-
-class IsPangramTestEN {
-	public static void run(java.util.Scanner kb)
 	{		
-		for (;;) {
-			System.out.print("Input a text:");
-			String s = kb.nextLine();
-			
-			if ("exit".equals(s))
-				break;
-			
-			System.out.println(StringUtil.isPangramEN(s) ? "is pangram" : "is not a pangram");						
-		}				
-	}
-}
-
-class IsPangramTestTR {
-	public static void run(java.util.Scanner kb)
-	{		
+		java.util.Scanner kb = new java.util.Scanner(System.in);		
+		
 		for (;;) {
 			System.out.print("Bir yazı giriniz:");
 			String s = kb.nextLine();
@@ -53,19 +30,16 @@ class IsPangramTestTR {
 			if ("elma".equals(s))
 				break;
 			
-			System.out.println(StringUtil.isPangramTR(s) ? "Pangram" : "Pangram değil");						
+			System.out.println(StringUtil.isPalindrome(s) ? "Palindrom" : "Palindrom değil");
 		}				
+		
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
 
-class StringUtil {
-	public static boolean isPangramTR(String s)
-	{
-		//TODO:
-	}
-	
-	public static boolean isPangramEN(String s)
+class StringUtil {	
+	public static boolean isPalindrome(String s)
 	{
 		//TODO:
 	}
