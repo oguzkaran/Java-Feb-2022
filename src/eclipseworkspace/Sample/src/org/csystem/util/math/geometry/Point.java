@@ -3,7 +3,7 @@
 	AUTHOR      : Java-Feb-2022 Group
 	LAST UPDATE : 11.06.2022
 
-	Point class that represents a 2 dimensional point in cartesian plane
+	Point class that represents a 2 dimensional point in Cartesian plane
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
