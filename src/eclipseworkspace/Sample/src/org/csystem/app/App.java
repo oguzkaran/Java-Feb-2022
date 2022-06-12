@@ -1,19 +1,19 @@
 /*----------------------------------------------------------------------------------------------------------------------	 
-	Yukarıdaki kurallara göre isimsiz paket altında bulunan bir sınıfa başka bir paket içerisinden erişilemez. Nitelikli
-	olarak da erişilemez. Yalnızca bu sebepten bile bir projede isimsiz paket altında sınıf bildirilmemelidir 
+	Yıldızlı import bildirimlerine ilişkin paketlerin hepsine bakılır. Birden fazla paket içerisinde isim bulunursa
+	error oluşur (ambiguity)	
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import test.*;
+import mest.*;
 
 class App {	
 	public static void main(String [] args)
 	{		
-		Sample s = new Sample(); //error
-		
-		s.foo(45);
-		
-		System.out.printf("s.a = %d%n", s.a);
+		test.Sample s; 
+		mest.Sample k;
+		Mample m;
 	}
 }
-
 
 
