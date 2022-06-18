@@ -36,10 +36,21 @@ public class ArrayUtil {
         System.out.println();
     }
 
-    public static int sum(int [] a)
+    public static void reverse(int [] a)
     {
         //TODO:
     }
+
+    public static int sum(int [] a)
+    {
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += a[i];
+
+        return total;
+    }
+
     public static void swap(int [] a, int i, int k)
     {
         int temp =  a[i];
