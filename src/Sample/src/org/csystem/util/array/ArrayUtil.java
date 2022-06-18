@@ -10,7 +10,24 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.array;
 
+import java.util.Random;
+
 public class ArrayUtil {
+    public static void fillRandomArray(Random r, int [] a, int min, int max) //[min, max]
+    {
+        for (int i = 0; i < a.length; ++i)
+            a[i] = r.nextInt(min, max + 1);
+    }
+
+    public static int [] getRandomArray(Random r, int count, int min, int max) //[min, max]
+    {
+        int [] a = new int[count];
+
+        fillRandomArray(r, a, min, max);
+
+        return a;
+    }
+
     public static void print(int [] a)
     {
         for (int i = 0; i < a.length; ++i)
@@ -19,6 +36,10 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static int sum(int [] a)
+    {
+        //TODO:
+    }
     public static void swap(int [] a, int i, int k)
     {
         int temp =  a[i];
