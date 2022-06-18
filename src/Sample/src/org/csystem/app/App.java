@@ -1,13 +1,19 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	Aşağıdaki örnekte doğrudan sqrt çağrısı için sınıfın int parametreli sqrt metodunun ismi bulunur. Bu durumda uygun
-	metot bulunamayacağı için error oluşur
+	Bir metodun parametresi bir dizi referansı olabilir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-class App {	
+import static org.csystem.util.array.ArrayUtil.print;
+import static org.csystem.util.array.ArrayUtil.swap;
+
+class App {
 	public static void main(String [] args)
 	{
+		int [] a = {10, 20, 30, 40};
 
+		print(a);
+		swap(a, 1, 3);
+		print(a);
 	}	
 }
 
