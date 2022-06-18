@@ -47,6 +47,12 @@ public class NumberUtil {
 
         return sum;
     }
+
+    public static int [] getDigits(long a)
+    {
+        //TODO:
+    }
+
     public static int factorial(int n)
     {
         int result = 1;
