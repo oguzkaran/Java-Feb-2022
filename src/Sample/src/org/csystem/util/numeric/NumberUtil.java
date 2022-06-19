@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 18.06.2022
+	LAST UPDATE : 19.06.2022
 
 	Utility class for numeric operations
 
@@ -31,7 +31,7 @@ public class NumberUtil {
         return root;
     }
 
-    public static int countDigits(int a)
+    public static int countDigits(long a)
     {
         return a == 0 ? 1 : (int)log10(abs(a)) + 1;
     }
@@ -48,10 +48,7 @@ public class NumberUtil {
         return sum;
     }
 
-    public static int [] getDigits(long a)
-    {
-        //TODO:
-    }
+
 
     public static int factorial(int n)
     {
@@ -77,6 +74,18 @@ public class NumberUtil {
 
         return val;
     }
+
+    public static int [] getDigits(long a)
+    {
+        a = Math.abs(a);
+        int [] digits = new int[countDigits(a)];
+
+        for (int i = digits.length - 1; a != 0; digits[i--] = (int)(a % 10), a /= 10)
+            ;
+
+        return digits;
+    }
+
     public static int getDigitsPowSum(int a)
     {
         int n = countDigits(a);
