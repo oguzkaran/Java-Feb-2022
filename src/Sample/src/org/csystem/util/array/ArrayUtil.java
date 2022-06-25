@@ -20,7 +20,7 @@ public class ArrayUtil {
                 if (a[k + 1] < a[k])
                     swap(a, k, k + 1);
     }
-    
+
     public static void bubbleSortDescending(int [] a)
     {
         for (int i = 0; i < a.length - 1; ++i)
