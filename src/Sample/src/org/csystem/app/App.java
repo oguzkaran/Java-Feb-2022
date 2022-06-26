@@ -1,21 +1,36 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Homework-007-1. sorunun bir çözümü
-	(Not: Çözüm çalışma sorusunun verildiği tarihte işlenmiş olan konulara göre yazılmıştır)
+	Referans dizileri
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.string.StringUtil;
 
 class App {
 	public static void main(String [] args)
 	{
-
+		SqueezeTest.run();
 	}
 }
 
+class SqueezeTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
 
+		for (;;) {
+			System.out.print("Birinci yazıyı giriniz:");
+			String s1 = kb.nextLine();
 
-class Lotto {
-	public boolean winGame1;
-	public boolean winGame2;
-	public boolean winGame3;
-	java.util.Random random;
+			if ("elma".equals(s1))
+				break;
+
+			System.out.print("İkinci yazıyı giriniz:");
+			String s2 = kb.nextLine();
+
+			System.out.println(StringUtil.squeeze(s1, s2));
+		}
+
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
 }
+

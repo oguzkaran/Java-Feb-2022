@@ -81,6 +81,21 @@ public class ArrayUtil {
             bubbleSortAscending(a);
     }
 
+
+    public static void drawHistogram(int [] counts, int n, char ch)
+    {
+        int maxVal = max(counts);
+
+        for (int i = 0; i < counts.length; ++i) {
+            int nChar = (int)Math.floor(counts[i] * (double)n / maxVal);
+
+            while (nChar-- > 0)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+    }
+
     public static void fillRandomArray(Random r, int [] a, int min, int max) //[min, max]
     {
         for (int i = 0; i < a.length; ++i)
@@ -121,6 +136,26 @@ public class ArrayUtil {
         return result;
     }
 
+    public static int max(int [] a)
+    {
+        int result = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            result = Math.max(result, a[i]);
+
+        return result;
+    }
+
+    public static int min(int [] a)
+    {
+        int result = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            result = Math.min(result, a[i]);
+
+        return result;
+    }
+
     public static int partition(int [] a, int threshold)
     {
         int partitionIndex = 0;
@@ -153,6 +188,13 @@ public class ArrayUtil {
         print(1, a);
     }
 
+
+    public static void reverse(char [] a)
+    {
+        for (int i = 0; i < a.length / 2; ++i)
+            swap(a, i, a.length - 1 - i);
+    }
+
     public static void reverse(int [] a)
     {
         for (int i = 0; i < a.length / 2; ++i)
@@ -180,6 +222,14 @@ public class ArrayUtil {
             total += a[i];
 
         return total;
+    }
+
+
+    public static void swap(char [] a, int i, int k)
+    {
+        char temp =  a[i];
+        a[i] = a[k];
+        a[k] = temp;
     }
 
     public static void swap(int [] a, int i, int k)

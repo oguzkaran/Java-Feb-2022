@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 18.06.2022
+	LAST UPDATE : 26.06.2022
 
 	Utility class for string operations
 
@@ -10,8 +10,9 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.string;
 
+import org.csystem.util.array.ArrayUtil;
+
 import java.util.Random;
-import java.util.Scanner;
 
 public class StringUtil {
 	public static String capitalizeWS(String s)
@@ -25,30 +26,14 @@ public class StringUtil {
 		return i == len ? s : s.substring(0, i) + Character.toUpperCase(s.charAt(i)) + s.substring(i + 1).toLowerCase(); 
 	}
 
-	public static void concatWithHyphen()
+	public static String changeCase(String s)
 	{
-		Scanner kb = new Scanner(System.in);
-		
-		System.out.println("Yazıları girmeye başlayınız:");
-		
-		String str = "";		
-		
-		for (;;) {
-			String s = kb.nextLine();
-			
-			if (s.trim().isEmpty())
-				continue;			
-			
-			if ("elma".equals(s))				
-				break;
-			
-			str += s + "-";			
-		}		
-		
-		if (!str.isEmpty())
-			str = str.substring(0, str.length() - 1);
-			
-		System.out.println(str);
+		char [] c = s.toCharArray();
+
+		for (int i = 0; i < c.length; ++i)
+			c[i] = Character.isLowerCase(c[i]) ? Character.toUpperCase(c[i]) : Character.toLowerCase(c[i]);
+
+		return String.valueOf(c);
 	}
 	
 	public static int countString(String s1, String s2)
@@ -90,13 +75,13 @@ public class StringUtil {
 
 	public static String getRandomText(Random r, int n, String sourceText)
 	{
-		String str = "";
+		char [] c = new char[n];
 		int len = sourceText.length();
 		
 		for (int i = 0; i < n; ++i)
-			str += sourceText.charAt(r.nextInt(len));
+			c[i] = sourceText.charAt(r.nextInt(len));
 		
-		return str;		
+		return String.valueOf(c);
 	}
 
 	public static String getRandomTextEN(Random r, int n)
@@ -174,7 +159,7 @@ public class StringUtil {
 	{
 		int length = s.length();
 		
-		return len <= length ? s :  (ch + "").repeat(len - length) + s;
+		return len <= length ? s : (ch + "").repeat(len - length) + s;
 	}
 	
  	public static String padLeading(String s, int len)
@@ -196,11 +181,30 @@ public class StringUtil {
 
 	public static String reverse(String str)
 	{
-		String s = "";
-		
-		for (int i = str.length() - 1; i >= 0; --i)
-			s += str.charAt(i); //**
-		
-		return s;
+		char [] c = str.toCharArray();
+
+		ArrayUtil.reverse(c);
+
+		return String.valueOf(c);
+	}
+
+	public static String squeeze(String s1, String s2)
+	{
+		int len = s1.length();
+		char [] c = new char[len];
+		int idx = 0;
+
+		for (int i = 0; i < len; ++i) {
+			char ch = s1.charAt(i);
+
+			if (!s2.contains(ch + ""))
+				c[idx++] = ch;
+		}
+
+		return String.valueOf(c, 0, idx);
+	}
+	public static String squeezeIgnoreCase(String s1, String s2)
+	{
+		return squeeze(s1.toLowerCase(), s2.toLowerCase());
 	}
 }
