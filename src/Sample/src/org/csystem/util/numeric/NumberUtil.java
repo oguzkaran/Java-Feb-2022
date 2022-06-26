@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 19.06.2022
+	LAST UPDATE : 26.06.2022
 
 	Utility class for numeric operations
 
@@ -47,8 +47,6 @@ public class NumberUtil {
 
         return sum;
     }
-
-
 
     public static int factorial(int n)
     {
@@ -196,6 +194,11 @@ public class NumberUtil {
         return isPrime(a) && isPrime(indexOfPrime(a));
     }
 
+    public static int max(int a, int b, int c)
+    {
+        return Math.max(Math.max(a, b), c);
+    }
+
     public static int mid(int a, int b, int c)
     {
         if (a <= b && b <= c || c <= b && b <= a)
@@ -206,6 +209,12 @@ public class NumberUtil {
 
         return c;
     }
+
+    public static int min(int a, int b, int c)
+    {
+        return Math.min(Math.min(a, b), c);
+    }
+
     public static void printCollatz(int n)
     {
         if (n <= 0) {
