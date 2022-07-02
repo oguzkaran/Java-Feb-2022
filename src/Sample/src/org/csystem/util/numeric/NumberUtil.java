@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 26.06.2022
+	LAST UPDATE : 02.07.2022
 
 	Utility class for numeric operations
 
@@ -16,6 +16,35 @@ import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 
 public class NumberUtil {
+    public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+    public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+
+    public static String numToText3DigitsTR(String str, int val)
+    {
+        int a = val / 100;
+        int b = val / 10 % 10;
+        int c = val % 10;
+
+        if (a != 0) {
+            if (a != 1)
+                str += ones[a];
+            str += "yüz";
+        }
+
+        if (b != 0)
+            str += tens[b];
+
+        if (c != 0)
+            str += ones[c];
+
+        return str;
+    }
+
+    public static String numToText3DigitsTR(int val)
+    {
+        return val == 0 ? "sıfır" : numToText3DigitsTR(val < 0 ? "eksi" : "", Math.abs(val));
+    }
+
     public static boolean areFriends(int a, int b)
     {
         return sumFactors(a) == b && sumFactors(b) == a;
