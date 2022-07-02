@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 26.06.2022
+	LAST UPDATE : 02.07.2022
 
 	Utility class for string operations
 
@@ -104,6 +104,36 @@ public class StringUtil {
 		return getRandomTextTR(new Random(), n);
 	}
 
+	public static String [] getRandomTextsEN(int count, int min, int max)
+	{
+		return getRandomTextsEN(new Random(), count, min, max);
+	}
+
+	public static String [] getRandomTextsEN(Random r, int count, int min, int max)
+	{
+		String [] result = new String[count];
+
+		for (int i = 0; i < count; ++i)
+			result[i] = getRandomTextEN(r, r.nextInt(min, max + 1));
+
+		return result;
+	}
+
+	public static String [] getRandomTextsTR(int count, int min, int max)
+	{
+		return getRandomTextsTR(new Random(), count, min, max);
+	}
+
+	public static String [] getRandomTextsTR(Random r, int count, int min, int max)
+	{
+		String [] result = new String[count];
+
+		for (int i = 0; i < count; ++i)
+			result[i] = getRandomTextTR(r, r.nextInt(min, max + 1));
+
+		return result;
+	}
+
 	public static boolean isPalindrome(String s)
 	{
 		int left = 0;
@@ -153,6 +183,35 @@ public class StringUtil {
 	public static boolean isPangramTR(String s)
 	{
 		return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");		
+	}
+
+	public static String join(String [] s, char delimiter)
+	{
+		return join(s, delimiter + "");
+	}
+
+	public static String join(String [] s, char delimiter, boolean removeEmpties)
+	{
+		return join(s, delimiter + "", removeEmpties);
+	}
+
+	public static String join(String [] s, String delimiter)
+	{
+		return String.join(delimiter, s);
+	}
+
+	public static String join(String [] s, String delimiter, boolean removeEmpties)
+	{
+		String str = "";
+
+		for (int i = 0; i < s.length; ++i) {
+			if (removeEmpties && s[i].isBlank())
+				continue;
+
+			str += s[i] + delimiter;
+		}
+
+		return str.substring(0, str.length() - delimiter.length());
 	}
 
 	public static String padLeading(String s, int len, char ch)

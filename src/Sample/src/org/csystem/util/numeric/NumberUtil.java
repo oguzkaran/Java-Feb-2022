@@ -19,6 +19,18 @@ public class NumberUtil {
     public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
     public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
+    public static int [] getDigits(long a, int n)
+    {
+        a = Math.abs(a);
+        int [] result = new int[a == 0 ? 1 : (int)(log10(a) / n) + 1];
+        int powOfTen = (int)pow(10, n);
+
+        for (int i = result.length - 1; i >= 0; result[i--] = (int)(a % powOfTen), a /= powOfTen)
+            ;
+
+        return result;
+    }
+
     public static String numToText3DigitsTR(String str, int val)
     {
         int a = val / 100;
@@ -104,13 +116,17 @@ public class NumberUtil {
 
     public static int [] getDigits(long a)
     {
-        a = Math.abs(a);
-        int [] digits = new int[countDigits(a)];
+       return getDigits(a, 1);
+    }
 
-        for (int i = digits.length - 1; a != 0; digits[i--] = (int)(a % 10), a /= 10)
-            ;
+    public static int [] getDigitsInTwos(long a)
+    {
+        return getDigits(a, 2);
+    }
 
-        return digits;
+    public static int [] getDigitsInThrees(long a)
+    {
+        return getDigits(a, 3);
     }
 
     public static int getDigitsPowSum(int a)

@@ -1,16 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı en fazla üç basamaklı bir sayının Türkçe okunuşunu döndüren numToText3DigitsTR
-	isimli metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-	Açıklamalar:
-		- Metot 3 basamaktan büyük sayı kontrolü yapmayacaktır
-		- Örnekler:
-				123		-> yüzyirmiüç
-				-123	-> eksiyüzyirmiüç
-				203		-> ikiyüzüç
+	Sınıf Çalışması: Klavyeden int türden bir n sayısı için değer isteyiniz. n elemanlı bir String dizisi
+	yaratınız. Bu dizinin her bir elemanını rasgele uzunlukta üretilmiş Türkçe karakterlerden oluşan yazılarla
+	doldurunuz. Bu işlemden sonra StringUtil sınıfı içerisinde yazacağınız parametresi ile aldığı int türden bir String
+	dizisinin elemanlarını, yine parametresi ile aldığı bir ayraç ile birleştirilmiş bir String'e geri dönen join isimli
+	metodu çağırarak sonucu ekrana yazdırınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.util.numeric.NumberUtil;
+import org.csystem.util.array.ArrayUtil;
+import org.csystem.util.string.StringUtil;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -18,23 +16,29 @@ import java.util.Scanner;
 class App {
 	public static void main(String [] args)
 	{
-		NumToText3DigitsTRTest.run();
+		JoinWithDelimiterApp.run();
 	}
 }
 
-class NumToText3DigitsTRTest {
+class JoinWithDelimiterApp {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
 		Random r = new Random();
 
-		System.out.print("Bir sayı giriniz:");
-		int count = Integer.parseInt(kb.nextLine());
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int count = Integer.parseInt(kb.nextLine());
 
-		for (int i = 0; i < count; ++i) {
-			int val = r.nextInt(-999, 1000);
-			String fmt = (val < 0 ? "-%03d " : " %03d ") +  " -> %s%n";
-			System.out.printf(fmt, Math.abs(val), NumberUtil.numToText3DigitsTR(val));
+			if (count <= 0)
+				break;
+
+			String [] s = StringUtil.getRandomTextsTR(r, count, 5, 10);
+
+			System.out.println("----------------------------------------------------");
+			ArrayUtil.print(s);
+			System.out.println(StringUtil.join(s, '-'));
+			System.out.println("----------------------------------------------------");
 		}
 
 		System.out.println("Tekrar yapıyor musunuz?");
