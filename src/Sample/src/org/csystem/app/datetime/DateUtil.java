@@ -10,6 +10,13 @@ public class DateUtil {
 	public static String [] monthsEN = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 	public static String [] daysOfWeekEN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
+	public static String getDateStrTR(int day, int month, int year)
+	{
+		int dayOfWeek = getDayOfWeek(day, month, year);
+
+		return dayOfWeek != -1 ? String.format("%d %s %d %s", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]) : "";
+	}
+
 	public static void printDateTR(int day, int month, int year)
 	{
 		int dayOfWeek = getDayOfWeek(day, month, year);
