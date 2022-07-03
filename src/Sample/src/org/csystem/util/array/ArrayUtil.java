@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 02.07.2022
+	LAST UPDATE : 03.07.2022
 
 	Utility class for array operations
 
@@ -121,6 +121,35 @@ public class ArrayUtil {
         return a;
     }
 
+    public static int [][] getRandomMatrix(Random r, int m, int n, int min, int max) //[min, max]
+    {
+        int [][] a = new int[m][];
+
+        for (int i = 0; i < m; ++i)
+            a[i] = getRandomArray(r, n, min, max);
+
+        return a;
+    }
+
+    public static int [][] getRandomSquareMatrix(Random r, int n, int min, int max) //[min, max]
+    {
+        return getRandomMatrix(r, n, n, min, max);
+    }
+
+    public static boolean isMatrix(int [][] a)
+    {
+        for (int i = 1; i < a.length; ++i)
+            if (a[i].length != a[0].length)
+                return false;
+
+        return true;
+    }
+
+    public static boolean isSquareMatrix(int [][] a)
+    {
+        return isMatrix(a) && a.length == a[0].length;
+    }
+
     public static int [] join(int [] a, int [] b)
     {
         int [] result = new int[a.length + b.length];
@@ -194,6 +223,17 @@ public class ArrayUtil {
             System.out.println(s[i]);
     }
 
+    public static void print(int [][] a)
+    {
+        print(1, a);
+    }
+
+    public static void print(int n,  int [][] a)
+    {
+        for (int i = 0; i < a.length; ++i)
+            print(n, a[i]);
+    }
+
 
     public static void reverse(char [] a)
     {
@@ -226,6 +266,16 @@ public class ArrayUtil {
 
         for (int i = 0; i < a.length; ++i)
             total += a[i];
+
+        return total;
+    }
+
+    public static int sum(int [][] a)
+    {
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += sum(a[i]);
 
         return total;
     }
