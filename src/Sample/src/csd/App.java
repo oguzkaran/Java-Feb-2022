@@ -4,7 +4,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
-import org.csystem.app.datetime.DateUtilApp;
+import org.csystem.app.commandprompt.CommandPromptApp;
 
 class App {
     public static void main(String [] args)

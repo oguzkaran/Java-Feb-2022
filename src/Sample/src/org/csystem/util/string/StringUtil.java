@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 02.07.2022
+	LAST UPDATE : 16.07.2022
 
 	Utility class for string operations
 
@@ -204,11 +204,11 @@ public class StringUtil {
 	{
 		String str = "";
 
-		for (int i = 0; i < s.length; ++i) {
-			if (removeEmpties && s[i].isBlank())
+		for (String sVal : s) {
+			if (removeEmpties && sVal.isBlank())
 				continue;
 
-			str += s[i] + delimiter;
+			str += sVal + delimiter;
 		}
 
 		return str.substring(0, str.length() - delimiter.length());

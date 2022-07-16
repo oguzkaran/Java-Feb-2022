@@ -86,8 +86,8 @@ public class ArrayUtil {
     {
         int maxVal = max(counts);
 
-        for (int i = 0; i < counts.length; ++i) {
-            int nChar = (int)Math.floor(counts[i] * (double)n / maxVal);
+        for (int count : counts) {
+            int nChar = (int)Math.floor(count * (double)n / maxVal);
 
             while (nChar-- > 0)
                 System.out.print(ch);
@@ -106,8 +106,8 @@ public class ArrayUtil {
     {
         int [] counts = new int[n + 1];
 
-        for (int i = 0; i < a.length; ++i)
-            ++counts[a[i]];
+        for (int val : a)
+            ++counts[val];
 
         return counts;
     }
@@ -156,11 +156,11 @@ public class ArrayUtil {
 
         int idx = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            result[idx++] = a[i];
+        for (int val : a)
+            result[idx++] = val;
 
-        for (int i = 0; i < b.length; ++i)
-            result[idx++] = b[i];
+        for (int val : b)
+            result[idx++] = val;
 
         return result;
     }
@@ -206,8 +206,8 @@ public class ArrayUtil {
     {
         String fmt = String.format("%%0%dd ", n);
 
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf(fmt, a[i]);
+        for (int val : a)
+            System.out.printf(fmt, val);
 
         System.out.println();
     }
@@ -219,8 +219,8 @@ public class ArrayUtil {
 
     public static void print(String [] s)
     {
-        for (int i = 0; i < s.length; ++i)
-            System.out.println(s[i]);
+        for (String str : s)
+            System.out.println(str);
     }
 
     public static void print(int [][] a)
@@ -230,8 +230,8 @@ public class ArrayUtil {
 
     public static void print(int n,  int [][] a)
     {
-        for (int i = 0; i < a.length; ++i)
-            print(n, a[i]);
+        for (int [] array : a)
+            print(n, array);
     }
 
 
@@ -264,8 +264,8 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += a[i];
+        for (int val : a)
+            total += val;
 
         return total;
     }
@@ -274,8 +274,8 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += sum(a[i]);
+        for (int [] array : a)
+            total += sum(array);
 
         return total;
     }

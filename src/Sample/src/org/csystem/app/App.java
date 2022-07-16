@@ -1,14 +1,35 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Aşağıodaki örnekte her bir adımda String dizisinin elemanı olan String referansları elde edilmiştir
+	Sınıfın no-modifier bölümü aynı paketteki diğer sınıflar için public anlamındadır (friendly)
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
 	public static void main(String [] args)
 	{
-		String [] cities = {"ankara", "istanbul", "izmir", "zonguldak"};
 
-		for (String city : cities)
-			System.out.println(city);
+	}
+}
+
+
+class B {
+	public void bar()
+	{
+		A a = new A();
+
+		a.x = 10;
+		a.foo();
+	}
+}
+
+class A {
+	int x;
+	A()
+	{
+		//...
+	}
+
+	void foo()
+	{
+		//...
 	}
 }
