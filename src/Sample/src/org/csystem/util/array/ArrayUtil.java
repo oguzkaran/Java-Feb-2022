@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 03.07.2022
+	LAST UPDATE : 16.07.2022
 
 	Utility class for array operations
 
@@ -280,6 +280,16 @@ public class ArrayUtil {
         return total;
     }
 
+    public static int sumDiagonal(int [][] a)
+    {
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += a[i][i];
+
+        return total;
+    }
+
     public static void swap(char [] a, int i, int k)
     {
         char temp =  a[i];
@@ -292,5 +302,16 @@ public class ArrayUtil {
         int temp =  a[i];
         a[i] = a[k];
         a[k] = temp;
+    }
+
+    public static int [][] transpose(int [][] a)
+    {
+        int [][] result = new int[a[0].length][a.length];
+
+        for (int i = 0; i < a.length; ++i)
+            for (int j = 0; j < a[i].length; ++j)
+                result[j][i] = a[i][j];
+
+        return result;
     }
 }
