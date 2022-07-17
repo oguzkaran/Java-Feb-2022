@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 02.07.2022
+	LAST UPDATE : 17.07.2022
 
 	Utility class for numeric operations
 
@@ -16,10 +16,10 @@ import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 
 public class NumberUtil {
-    public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-    public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+    private static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+    private static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
-    public static int [] getDigits(long a, int n)
+    private static int [] getDigits(long a, int n)
     {
         a = Math.abs(a);
         int [] result = new int[a == 0 ? 1 : (int)(log10(a) / n) + 1];
@@ -31,7 +31,7 @@ public class NumberUtil {
         return result;
     }
 
-    public static String numToText3DigitsTR(String str, int val)
+    private static String numToText3DigitsTR(String str, int val)
     {
         int a = val / 100;
         int b = val / 10 % 10;
@@ -52,7 +52,7 @@ public class NumberUtil {
         return str;
     }
 
-    public static String numToText3DigitsTR(int val)
+    private static String numToText3DigitsTR(int val)
     {
         return val == 0 ? "sıfır" : numToText3DigitsTR(val < 0 ? "eksi" : "", Math.abs(val));
     }

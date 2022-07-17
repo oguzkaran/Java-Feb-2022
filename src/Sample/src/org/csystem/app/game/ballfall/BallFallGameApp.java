@@ -19,7 +19,7 @@ public class BallFallGameApp {
 			
 			bf.play(width, height);
 			
-			System.out.println(bf.shape);
+			System.out.println(bf.getShape());
 		}
 		
 		System.out.println("Tekrar yap?yor musunuz?");

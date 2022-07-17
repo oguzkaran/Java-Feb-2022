@@ -1,66 +1,24 @@
 /*----------------------------------------------------------------------------------------------------------------------
-
+	Circle sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.math.geometry.Circle;
 
 class App {
 	public static void main(String [] args)
 	{
-		Date birthDate = new Date(11, 7, 1983);
+		Circle c = new Circle(-2.4);
 
-		System.out.printf("%02d/%02d/%04d%n", birthDate.getDay(), birthDate.getMonth(), birthDate.getYear());
+		System.out.printf("Radius:%f%n", c.getRadius());
+		System.out.printf("Area:%f%n", c.getArea());
+		System.out.printf("Circumference:%f%n", c.getCircumference());
 
-		birthDate.setDay(6);
-		birthDate.setMonth(9);
-		birthDate.setYear(2021);
+		c.setRadius(4.5);
 
-		System.out.printf("%02d/%02d/%04d%n", birthDate.getDay(), birthDate.getMonth(), birthDate.getYear());
+		System.out.printf("Radius:%f%n", c.getRadius());
+		System.out.printf("Area:%f%n", c.getArea());
+		System.out.printf("Circumference:%f%n", c.getCircumference());
 	}
 }
 
-class Date {
-	private int m_day, m_month, m_year;
-
-	public Date(int day, int month, int year)
-	{
-		//...
-		m_day = day;
-		m_month = month;
-		m_year = year;
-	}
-
-	public int getDay()
-	{
-		return m_day;
-	}
-
-	public void setDay(int day)
-	{
-		//...
-		m_day = day;
-	}
-
-	public int getMonth()
-	{
-		return m_month;
-	}
-
-	public void setMonth(int month)
-	{
-		//...
-		m_month = month;
-	}
-
-	public int getYear()
-	{
-		return m_year;
-	}
-
-	public void setYear(int year)
-	{
-		//...
-		m_year = year;
-	}
-
-	//...
-}
