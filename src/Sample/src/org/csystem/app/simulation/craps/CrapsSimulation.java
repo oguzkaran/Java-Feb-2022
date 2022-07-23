@@ -3,7 +3,12 @@ package org.csystem.app.simulation.craps;
 import org.csystem.app.game.craps.Craps;
 
 public class CrapsSimulation {
-	public double p;
+	private double m_p;
+
+	public double getProbability()
+	{
+		return m_p;
+	}
 	
 	public void run(int n)
 	{		
@@ -18,6 +23,8 @@ public class CrapsSimulation {
 				++winCount;
 		}
 		
-		p = (double)winCount / n;
+		m_p = (double)winCount / n;
 	}
+
+
 }

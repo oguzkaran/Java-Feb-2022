@@ -13,7 +13,6 @@ package org.csystem.util.math.geometry;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
-
 public class Point {
 	private int m_x;
 	private int m_y;

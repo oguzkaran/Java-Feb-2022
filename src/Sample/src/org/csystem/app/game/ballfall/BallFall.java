@@ -3,7 +3,7 @@ package org.csystem.app.game.ballfall;
 public class BallFall {
 	private String m_shape;
 	
-	public static boolean updateRightFlag(boolean isRight, int ballIndex, int width)
+	private static boolean updateRightFlag(boolean isRight, int ballIndex, int width)
 	{
 		if (ballIndex == 0)
 			isRight = true;
@@ -13,7 +13,7 @@ public class BallFall {
 		return isRight;		
 	}
 	
-	public static int updateBallIndex(boolean isRight, int ballIndex)
+	private static int updateBallIndex(boolean isRight, int ballIndex)
 	{
 		if (isRight)
 			return ballIndex + 1;
@@ -21,20 +21,19 @@ public class BallFall {
 		return ballIndex - 1;
 	}
 	
-	public void fillSpace(int begin, int end) //[begin, end)
+	private void fillSpace(int begin, int end) //[begin, end)
 	{
 		for (int i = begin; i < end; ++i)
 			m_shape += ' ';
 	}
 	
-	public void fillBall(int ballIndex, int end)
+	private void fillBall(int ballIndex, int end)
 	{
 		fillSpace(0, ballIndex);
 		m_shape += '*';
 		fillSpace(ballIndex + 1, end);
 	}
-	
-	
+
 	public BallFall()
 	{
 		m_shape = "";

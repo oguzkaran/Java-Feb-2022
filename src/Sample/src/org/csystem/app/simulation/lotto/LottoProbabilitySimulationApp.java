@@ -14,9 +14,9 @@ public class LottoProbabilitySimulationApp {
 
             simulation.run();
 
-            System.out.printf("1.oyun için kazanma olasılığı:%f%n", simulation.game1Prob);
-            System.out.printf("2.oyun için kazanma olasılığı:%f%n", simulation.game2Prob);
-            System.out.printf("3.oyun için kazanma olasılığı:%f%n", simulation.game3Prob);
+            System.out.printf("1.oyun için kazanma olasılığı:%f%n", simulation.getGame1Prob());
+            System.out.printf("2.oyun için kazanma olasılığı:%f%n", simulation.getGame2Prob());
+            System.out.printf("3.oyun için kazanma olasılığı:%f%n", simulation.getGame3Prob());
         }
 
         System.out.println("Tekrar yapıyor musunuz?");

@@ -22,6 +22,6 @@ public class BallFallGameApp {
 			System.out.println(bf.getShape());
 		}
 		
-		System.out.println("Tekrar yap?yor musunuz?");
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }

@@ -7,7 +7,7 @@ public class CrapsSimulationApp {
 		
 		for (;;) {
 			
-			System.out.print("Ka� kez oynamak istersiniz?");
+			System.out.print("Kaç kez oynamak istersiniz?");
 			int n = kb.nextInt();
 			
 			if (n <= 0)
@@ -17,7 +17,7 @@ public class CrapsSimulationApp {
 			CrapsSimulation cs = new CrapsSimulation();
 			
 			cs.run(n);
-			System.out.printf("Kazanma olas?l???:%f%n", cs.p);
+			System.out.printf("Kazanma olasılığı:%f%n", cs.getProbability());
 			System.out.println("-----------------------------------------");
 		}		
 	}

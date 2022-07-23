@@ -5,23 +5,23 @@ import org.csystem.util.string.StringUtil;
 import java.util.Scanner;
 
 public class CommandPrompt {
-    public static String [] commands = {"lower", "upper", "reverse", "length", "chgprompt", "quit"};
-    public String prompt;
-    public Scanner kb;
+    private static String [] ms_commands = {"lower", "upper", "reverse", "length", "chgprompt", "quit"};
+    private String m_prompt;
+    private Scanner m_kb;
 
-    public static int getCommandIndex(String cmd)
+    private static int getCommandIndex(String cmd)
     {
         if (cmd.length() < 3)
             return -1;
 
-        for (int i = 0; i < commands.length; ++i)
-            if (commands[i].startsWith(cmd))
+        for (int i = 0; i < ms_commands.length; ++i)
+            if (ms_commands[i].startsWith(cmd))
                 return i;
 
         return -1;
     }
 
-    public static void lowerCallback(String [] commandInfo)
+    private static void lowerCallback(String [] commandInfo)
     {
         if (commandInfo.length != 2) {
             System.out.println("There must be 1 argument for that command");
@@ -31,7 +31,7 @@ public class CommandPrompt {
         System.out.println(commandInfo[1].toLowerCase());
     }
 
-    public static void upperCallback(String [] commandInfo)
+    private static void upperCallback(String [] commandInfo)
     {
         if (commandInfo.length != 2) {
             System.out.println("There must be 1 argument for that command");
@@ -41,7 +41,7 @@ public class CommandPrompt {
         System.out.println(commandInfo[1].toUpperCase());
     }
 
-    public static void reverseCallback(String [] commandInfo)
+    private static void reverseCallback(String [] commandInfo)
     {
         if (commandInfo.length != 2) {
             System.out.println("There must be 1 argument for that command");
@@ -51,7 +51,7 @@ public class CommandPrompt {
         System.out.println(StringUtil.reverse(commandInfo[1]));
     }
 
-    public static void lengthCallback(String [] commandInfo)
+    private static void lengthCallback(String [] commandInfo)
     {
         if (commandInfo.length != 2) {
             System.out.println("There must be 1 argument for that command");
@@ -61,24 +61,24 @@ public class CommandPrompt {
         System.out.println(commandInfo[1].length());
     }
 
-    public void changePromptCallback(String [] commandInfo)
+    private void changePromptCallback(String [] commandInfo)
     {
         if (commandInfo.length != 2) {
             System.out.println("There must be 1 argument for that command");
             return;
         }
 
-        prompt = commandInfo[1];
+        m_prompt = commandInfo[1];
     }
 
-    public static void quitCallback(String [] commandInfo)
+    private static void quitCallback(String [] commandInfo)
     {
         System.out.println("Thanks!...");
         System.out.println("C and System Programmers Association");
         System.exit(0);
     }
 
-    public void doCommand(String [] commandInfo)
+    private void doCommand(String [] commandInfo)
     {
         switch (commandInfo[0]) {
             case "lower" -> lowerCallback(commandInfo);
@@ -90,13 +90,13 @@ public class CommandPrompt {
         }
     }
 
-    public void parseCommand(String cmd)
+    private void parseCommand(String cmd)
     {
         String [] commandInfo = cmd.split("[ \t]+");
         int idx = getCommandIndex(commandInfo[0]);
 
         if (idx != -1) {
-            commandInfo[0] = commands[idx];
+            commandInfo[0] = ms_commands[idx];
             doCommand(commandInfo);
         }
         else
@@ -105,15 +105,15 @@ public class CommandPrompt {
 
     public CommandPrompt(String p)
     {
-        prompt = p;
-        kb = new Scanner(System.in);
+        m_prompt = p;
+        m_kb = new Scanner(System.in);
     }
 
     public void run()
     {
         for (;;) {
-            System.out.print(prompt + ">");
-            parseCommand(kb.nextLine());
+            System.out.print(m_prompt + ">");
+            parseCommand(m_kb.nextLine());
         }
     }
 }
