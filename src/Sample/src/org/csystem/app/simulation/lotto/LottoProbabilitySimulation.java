@@ -3,7 +3,7 @@ package org.csystem.app.simulation.lotto;
 import org.csystem.app.game.lotto.Lotto;
 
 public class LottoProbabilitySimulation {
-    private int m_count;
+    private final int m_count;
     private double m_game1Prob;
     private double m_game2Prob;
     private double m_game3Prob;
@@ -46,13 +46,13 @@ public class LottoProbabilitySimulation {
 
             lotto.play();
 
-            if (lotto.winGame1)
+            if (lotto.isWinGame1())
                 ++winCount1;
 
-            if (lotto.winGame2)
+            if (lotto.isWinGame2())
                 ++winCount2;
 
-            if (lotto.winGame3)
+            if (lotto.isWinGame3())
                 ++winCount3;
         }
 

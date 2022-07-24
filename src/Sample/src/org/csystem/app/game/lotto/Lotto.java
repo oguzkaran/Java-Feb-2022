@@ -2,22 +2,24 @@ package org.csystem.app.game.lotto;
 
 import org.csystem.util.numeric.NumberUtil;
 
+import java.util.Random;
+
 public class Lotto {
-    public boolean winGame1;
-    public boolean winGame2;
-    public boolean winGame3;
-    java.util.Random random;
+    private boolean m_winGame1;
+    private boolean m_winGame2;
+    private boolean m_winGame3;
+    private final Random m_random;
 
     public int getFirst()
     {
-        return random.nextInt(1, 100);
+        return m_random.nextInt(1, 100);
     }
 
     public int getSecond(int first)
     {
         int second;
 
-        while ((second = random.nextInt(1, 100)) == first)
+        while ((second = m_random.nextInt(1, 100)) == first)
             ;
 
         return second;
@@ -27,7 +29,7 @@ public class Lotto {
     {
         int third;
 
-        while ((third = random.nextInt(1, 100)) == first || third == second)
+        while ((third = m_random.nextInt(1, 100)) == first || third == second)
             ;
 
         return third;
@@ -35,12 +37,12 @@ public class Lotto {
 
     public void playGame1(int first, int second, int third)
     {
-        winGame1 = first + second + third < 150;
+        m_winGame1 = first + second + third < 150;
     }
 
     public void playGame2(int first, int second, int third)
     {
-        winGame2 = NumberUtil.isPrime(first + second + third);
+        m_winGame2 = NumberUtil.isPrime(first + second + third);
     }
 
     public void playGame3(int first, int second, int third)
@@ -49,12 +51,27 @@ public class Lotto {
         int mid = NumberUtil.mid(first, second, third);
         int max = NumberUtil.max(first, second, third);
 
-        winGame3 = max - min > mid;
+        m_winGame3 = max - min > mid;
     }
 
-    public Lotto(java.util.Random r)
+    public Lotto(Random r)
     {
-        random = r;
+        m_random = r;
+    }
+
+    public boolean isWinGame1()
+    {
+        return m_winGame1;
+    }
+
+    public boolean isWinGame2()
+    {
+        return m_winGame2;
+    }
+
+    public boolean isWinGame3()
+    {
+        return m_winGame3;
     }
 
     public void play()

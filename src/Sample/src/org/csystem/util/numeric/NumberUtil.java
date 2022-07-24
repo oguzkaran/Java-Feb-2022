@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 23.07.2022
+	LAST UPDATE : 24.07.2022
 
 	Utility class for numeric operations
 
@@ -20,8 +20,8 @@ public class NumberUtil {
     {
     }
 
-    private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-    private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+    private static final String [] ONES = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+    private static final String [] TENS = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
     private static int [] getDigits(long a, int n)
     {
@@ -43,15 +43,15 @@ public class NumberUtil {
 
         if (a != 0) {
             if (a != 1)
-                str += ms_ones[a];
+                str += ONES[a];
             str += "yüz";
         }
 
         if (b != 0)
-            str += ms_tens[b];
+            str += TENS[b];
 
         if (c != 0)
-            str += ms_ones[c];
+            str += ONES[c];
 
         return str;
     }

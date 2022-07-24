@@ -5,9 +5,9 @@ import org.csystem.util.string.StringUtil;
 import java.util.Scanner;
 
 public class CommandPrompt {
-    private static String [] ms_commands = {"lower", "upper", "reverse", "length", "chgprompt", "quit"};
+    private static final String [] ms_commands = {"lower", "upper", "reverse", "length", "chgprompt", "quit"};
+    private final Scanner m_kb;
     private String m_prompt;
-    private Scanner m_kb;
 
     private static int getCommandIndex(String cmd)
     {

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-Feb-2022 Group
-	LAST UPDATE : 23.07.2022
+	LAST UPDATE : 24.07.2022
 
 	Utility class for string operations
 
@@ -15,6 +15,13 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class StringUtil {
+	private static final String ALPHABET_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
+	private static final String ALPHABET_EN = "abcdefghijklmnopqrstuwxvyz";
+	private static final String ALPHABET_CAPITAL_TR = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+	private static final String ALPHABET_CAPITAL_EN = "ABCDEFGHIJKLMNOPQRSTUWXVYZ";
+	private static final String ALPHABET_ALL_TR = ALPHABET_TR + ALPHABET_CAPITAL_TR;
+	private static final String ALPHABET_ALL_EN = ALPHABET_EN + ALPHABET_CAPITAL_EN;
+
 	private StringUtil()
 	{
 	}
@@ -90,7 +97,7 @@ public class StringUtil {
 
 	public static String getRandomTextEN(Random r, int n)
 	{
-		return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
+		return getRandomText(r, n, ALPHABET_ALL_EN);
 	}
 	
 	public static String getRandomTextEN(int n)
@@ -100,7 +107,7 @@ public class StringUtil {
 
 	public static String getRandomTextTR(Random r, int n)
 	{
-		return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");		
+		return getRandomText(r, n, ALPHABET_ALL_TR);
 	}
 	
 	public static String getRandomTextTR(int n)
@@ -181,12 +188,12 @@ public class StringUtil {
 	
 	public static boolean isPangramEN(String s)
 	{
-		return isPangram(s.toLowerCase(), "abcdefghijklmnopqrstuwxvyz");
+		return isPangram(s.toLowerCase(), ALPHABET_EN);
 	}
 
 	public static boolean isPangramTR(String s)
 	{
-		return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");		
+		return isPangram(s.toLowerCase(), ALPHABET_TR);
 	}
 
 	public static String join(String [] s, char delimiter)

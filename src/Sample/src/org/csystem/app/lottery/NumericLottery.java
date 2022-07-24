@@ -3,7 +3,7 @@ package org.csystem.app.lottery;
 import java.util.Random;
 
 public class NumericLottery {
-    public Random random;
+    private final Random m_random;
 
     private static int [] getNumbers(boolean [] flags)
     {
@@ -26,7 +26,7 @@ public class NumericLottery {
             int a;
 
             for (;;) {
-                a = random.nextInt(1, 49);
+                a = m_random.nextInt(1, 49);
                 if (!flags[a])
                     break;
             }
@@ -38,12 +38,12 @@ public class NumericLottery {
 
     public NumericLottery()
     {
-        random = new Random();
+        m_random = new Random();
     }
 
     public NumericLottery(Random r)
     {
-        random = r;
+        m_random = r;
     }
 
     public int[] getNumbers()

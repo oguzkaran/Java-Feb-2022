@@ -13,7 +13,6 @@ package org.csystem.util.array;
 import java.util.Random;
 
 public class ArrayUtil {
-
     private ArrayUtil()
     {
     }
